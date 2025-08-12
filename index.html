@@ -271,7 +271,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -401,18 +400,24 @@
 
                 Ensure the description is engaging and clearly outlines the project's value.
             `;
+            
+            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { 
+                contents: chatHistory,
+                generationConfig: {
+                    responseMimeType: "application/json",
+                }
+            };
 
             try {
                 // 4. Call the Gemini API
-                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = { 
-                    contents: chatHistory,
-                    generationConfig: {
-                        responseMimeType: "application/json",
-                    }
-                };
-                const apiKey = ""; // API key will be injected by the environment
+                // IMPORTANT: Replace "YOUR_API_KEY_HERE" with your actual Gemini API key
+                const apiKey = "AIzaSyDukLR2KkSda1M3ea_RZ4-IPaylzjqrYzI"; 
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                if (apiKey === "YOUR_API_KEY_HERE") {
+                    throw new Error("API key not replaced. Please add your Gemini API key.");
+                }
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
@@ -421,7 +426,8 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
+                    const errorBody = await response.text();
+                    throw new Error(`API request failed with status ${response.status}: ${errorBody}`);
                 }
 
                 const result = await response.json();
