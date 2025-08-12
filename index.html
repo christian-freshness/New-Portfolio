@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Ajulor's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #0f172a; /* slate-900 */
+        }
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .loader {
+            border-top-color: #4f46e5; /* indigo-600 */
+            animation: spinner 1.5s linear infinite;
+        }
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-slate-800">CA</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-slate-600 hover:text-indigo-600 transition duration-300">About</a>
+                <a href="#skills" class="text-slate-600 hover:text-indigo-600 transition duration-300">Skills</a>
+                <a href="#projects" class="text-slate-600 hover:text-indigo-600 transition duration-300">Projects</a>
+                <a href="#ai-ideator" class="text-slate-600 hover:text-indigo-600 transition duration-300">AI Ideator</a>
+                <a href="#contact" class="text-slate-600 hover:text-indigo-600 transition duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-800">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="#about" class="block py-2 px-6 text-slate-600 hover:bg-slate-100">About</a>
+            <a href="#skills" class="block py-2 px-6 text-slate-600 hover:bg-slate-100">Skills</a>
+            <a href="#projects" class="block py-2 px-6 text-slate-600 hover:bg-slate-100">Projects</a>
+            <a href="#ai-ideator" class="block py-2 px-6 text-slate-600 hover:bg-slate-100">AI Ideator</a>
+            <a href="#contact" class="block py-2 px-6 text-slate-600 hover:bg-slate-100">Contact</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="hero" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4">Christian Ajulor</h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto">A Data Scientist | Machine Learning Engineer | AI Engineer | Data Analyst turning data into meaningful insights and impactful solutions.</p>
+                <a href="#projects" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition duration-300">View My Projects</a>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <img src="https://i.imgur.com/MOyuN3b.jpeg" alt="Christian Ajulor" class="rounded-full shadow-lg mx-auto">
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-slate-600 text-lg mb-4">Hello! I'm Christian, a data scientist/machine learning engineer with a passion for uncovering stories hidden within data. With an MSc background in Data Science, I have spent the last 5 years helping businesses make data-driven decisions.</p>
+                        <p class="text-slate-600 text-lg mb-4">I specialize in machine learning, statistical modeling, Data analysis and data visualization. My toolkit includes Python, R, SQL, and I'm proficient with libraries like Pandas, Scikit-learn, TensorFlow, etc. I enjoy tackling complex problems, building and deploying ML models that drive real-world impact.</p>
+                        <p class="text-slate-600 text-lg">When I'm not analyzing data, I enjoy reading and contributing to open-source projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">My Skills</h2>
+                <div id="skills-list" class="space-y-12">
+
+                    <!-- Category: Programming & Data -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-6 text-center">Programming & Data Manipulation</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-python-plain text-5xl text-blue-500 mb-4"></i><h3 class="font-semibold text-lg">Python</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-r-plain colored text-5xl text-blue-600 mb-4"></i><h3 class="font-semibold text-lg">R</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="fas fa-database text-5xl text-indigo-500 mb-4"></i><h3 class="font-semibold text-lg">SQL</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-pandas-plain text-5xl text-slate-700 mb-4"></i><h3 class="font-semibold text-lg">Pandas</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-apachespark-original text-5xl text-orange-500 mb-4"></i><h3 class="font-semibold text-lg">PySpark</h3></div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Machine Learning & MLOps -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-6 text-center">Machine Learning & MLOps</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center">
+                                <i class="devicon-scikitlearn-plain text-5xl text-orange-500 mb-4"></i>
+                                <h3 class="font-semibold text-lg">Scikit-learn</h3>
+                            </div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-tensorflow-original text-5xl text-orange-600 mb-4"></i><h3 class="font-semibold text-lg">TensorFlow</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center">
+                                <svg class="w-12 h-12 mx-auto mb-4 text-yellow-500" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Hugging Face</title><path d="M20.253 16.22a1.23 1.23 0 0 1-.626.63l-1.353.677a1.23 1.23 0 0 0-.626.63l-.677 1.353a1.23 1.23 0 0 1-1.104.68h-6.134a1.23 1.23 0 0 1-1.104-.68l-.677-1.353a1.23 1.23 0 0 0-.626-.63l-1.353-.677a1.23 1.23 0 0 1-.626-.63L3.78 14.867a1.23 1.23 0 0 1-.003-1.253l.677-1.353a1.23 1.23 0 0 0 0-1.254l-.677-1.353a1.23 1.23 0 0 1 .003-1.253L5.133 7.05a1.23 1.23 0 0 1 .626-.63l1.353-.677a1.23 1.23 0 0 0 .626-.63l.677-1.353A1.23 1.23 0 0 1 9.52.08h6.134a1.23 1.23 0 0 1 1.104.68l.677 1.353a1.23 1.23 0 0 0 .626.63l1.353.677a1.23 1.23 0 0 1 .626.63l1.353 1.353a1.23 1.23 0 0 1 .003 1.253l-.677 1.353a1.23 1.23 0 0 0 0 1.254l.677 1.353a1.23 1.23 0 0 1-.003 1.253l-1.353 1.353Zm-4.26-8.034a1.23 1.23 0 0 0-1.23-1.23h-1.23a1.23 1.23 0 1 0 0 2.46h1.23a1.23 1.23 0 0 0 1.23-1.23Zm-6.153 0a1.23 1.23 0 0 0-1.23-1.23H7.38a1.23 1.23 0 1 0 0 2.46h1.23a1.23 1.23 0 0 0 1.23-1.23Zm4.81 5.923c.31-.02.6-.14.84-.34a.92.92 0 0 0 .49-.82c0-.5-.38-.91-.86-.91s-.86.4-.86.91c0 .16.04.3.12.43a.84.84 0 0 1-.38.3.84.84 0 0 1-.46.13c-.18 0-.35-.05-.5-.15a.9.9 0 0 0-.37-.1c-.48 0-.86.4-.86.9s.39.9.86.9c.33 0 .62-.18.77-.45.23.17.5.27.8.27Z"/></svg>
+                                <h3 class="font-semibold text-lg">HuggingFace</h3>
+                            </div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="fas fa-project-diagram text-5xl text-blue-500 mb-4"></i><h3 class="font-semibold text-lg">MLFlow</h3></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category: Cloud, Deployment & Web -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-6 text-center">Cloud, Deployment & Web</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
+                           <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-amazonwebservices-plain-wordmark text-5xl text-orange-500 mb-4"></i><h3 class="font-semibold text-lg">AWS</h3></div>
+                           <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="fas fa-brain text-5xl text-orange-600 mb-4"></i><h3 class="font-semibold text-lg">SageMaker</h3></div>
+                           <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-docker-plain text-5xl text-blue-500 mb-4"></i><h3 class="font-semibold text-lg">Docker</h3></div>
+                           <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-fastapi-plain text-5xl text-green-500 mb-4"></i><h3 class="font-semibold text-lg">FastAPI</h3></div>
+                           <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-flask-original text-5xl text-slate-700 mb-4"></i><h3 class="font-semibold text-lg">Flask</h3></div>
+                           <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-django-plain text-5xl text-green-700 mb-4"></i><h3 class="font-semibold text-lg">Django</h3></div>
+                           <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-terraform-plain text-5xl text-purple-600 mb-4"></i><h3 class="font-semibold text-lg">Terraform</h3></div>
+                        </div>
+                    </div>
+
+                    <!-- Category: Tools & Visualization -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-6 text-center">Tools & Visualization</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8">
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-git-plain text-5xl text-red-500 mb-4"></i><h3 class="font-semibold text-lg">Git</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-jupyter-plain text-5xl text-orange-500 mb-4"></i><h3 class="font-semibold text-lg">Jupyter</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="devicon-vscode-plain text-5xl text-blue-500 mb-4"></i><h3 class="font-semibold text-lg">VS Code</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center">
+                                <i class="devicon-apacheairflow-plain text-5xl text-cyan-500 mb-4"></i>
+                                <h3 class="font-semibold text-lg">Airflow</h3>
+                            </div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="fas fa-chart-bar text-5xl text-yellow-500 mb-4"></i><h3 class="font-semibold text-lg">Power BI</h3></div>
+                            <div class="skill-card bg-white p-6 rounded-lg shadow-md text-center"><i class="fas fa-file-excel text-5xl text-green-600 mb-4"></i><h3 class="font-semibold text-lg">Excel</h3></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/3NdIfN5.jpeg?1" alt="nlp analysis of BBC News" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">NLP Analysis of BBC News</h3>
+                            <p class="text-slate-600 mb-4">This project undertakes a multi-faceted Natural Language Processing (NLP) analysis of the BBC News.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://github.com/christian-freshness/HMLR-NLP-Analysis-task-BBC-news-" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View Analysis</a>
+                                <a href="https://github.com/christian-freshness/HMLR-NLP-Analysis-task-BBC-news-" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/PVAfH9w.png" alt="Project 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Airline Customer Satisfaction Prediction</h3>
+                            <p class="text-slate-600 mb-4">Developed and trained machine learning models to predict airline customer satisfaction with 97% accuracy, Designed and deployed a web application for real-time prediction, enabling seamless user interaction with the model.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://airline-customer-satisfaction-predapp.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View Web App</a>
+                                <a href="https://github.com/christian-freshness/Airline-customer-satisfaction-prediction-App?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/6KIaADz.png" alt="Project 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Transaction Quality Checker</h3>
+                            <p class="text-slate-600 mb-4">Performs quality checks on a dataset of categorized transactions. The main functionality includes generating a classification report using the sklearn library and ensuring the code adheres to linting standards via pre-commit.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://github.com/christian-freshness/ANNA-Transaction-Task" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View Project</a>
+                                <a href="https://github.com/christian-freshness/ANNA-Transaction-Task" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/mKwF3jf.png" alt="Project 4" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">NLP Question-Answering AI Web App</h3>
+                            <p class="text-slate-600 mb-4">I built and Deployed a Question-Answer NLP model as a Web app using Gradio GUI. I made use of HuggingFace pre-trained model, Gradio GUI, Pandas, and hosted on HuggingFace spaces.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://medium.com/@christianajulor/how-to-build-and-deploy-a-question-answering-ai-web-app-5a3941347b19" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View Article</a>
+                                <a href="https://github.com/christian-freshness/NLP-Web-App-deployment-using-Gradio" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/495qFz7.png" alt="Project 5" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Predicting Hospital Inpatient Length of Stay</h3>
+                            <p class="text-slate-600 mb-4">Using Machine Learning to Predict Hospital Length of stay(admission days) for Patients with SCHIZOPHRENIA and other PSYCHOTIC DISORDERS.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://medium.com/@christianajulor/predicting-hospital-length-of-stay-for-inpatients-diagnosed-with-schizophrenia-and-other-psychotic-bf02c50db0c" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View Article</a>
+                                <a href="https://github.com/christian-freshness/Predicting-Hospital-inpatient-Length-of-Stay" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/yDGdRAw.png" alt="Predictive Analysis of Factors Influencing British Airways Customer Purchasing Behavior" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Predictive Analysis of Factors Influencing British Airways Customer Purchasing Behavior</h3>
+                            <p class="text-slate-600 mb-4">Conducted a predictive analytics project to identify and quantify the key factors influencing British Airways customer purchasing decisions, leveraging web-scraped datasets and statistical modeling to evaluate the impact of variables.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://github.com/christian-freshness/Predicting-customer-buying-behaviour" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View Project</a>
+                                <a href="https://github.com/christian-freshness/Predicting-customer-buying-behaviour" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 7 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/WtMQwui.jpeg" alt="Dog Breed identification" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Image Classifier, Dog Breed identification</h3>
+                            <p class="text-slate-600 mb-4">Trained a deep learning model with TensorFlow and Keras to classify images with high accuracy. It predicts dog breeds from given custom data, i call it Dog vision</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://github.com/christian-freshness/Dog-Breed-identification/tree/main" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View Project</a>
+                                <a href="https://github.com/christian-freshness/Dog-Breed-identification/blob/main/Dog_vision.ipynb" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 8 -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://i.imgur.com/wUKUxib.png" alt="Predicting Heart Disease using Machine Learning" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Predicting Heart Disease using Machine Learning</h3>
+                            <p class="text-slate-600 mb-4">The project involves binary classification (a sample can only be one of two things). Which involves using a number of different features (pieces of information) about a person to predict whether they have heart disease or not.</p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://github.com/christian-freshness/ML-projects/tree/main" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">View project</a>
+                                <a href="https://github.com/christian-freshness/ML-projects/blob/main/HEART%20DISEASE%20CLASSIFICATION.ipynb" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-600"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Project Ideator Section -->
+        <section id="ai-ideator" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">AI Project Ideator</h2>
+                <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Curious what to build next? Click the button below to get a unique data science project idea, generated by AI, based on my skills.</p>
+                <button id="generate-idea-btn" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 inline-flex items-center">
+                    ✨ Generate Project Idea
+                </button>
+                <div id="idea-container" class="mt-12 text-left max-w-2xl mx-auto">
+                    <div id="loader" class="hidden mx-auto loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                    <div id="idea-content" class="hidden bg-white p-8 rounded-lg shadow-lg">
+                        <!-- Generated content will appear here -->
+                    </div>
+                    <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg" role="alert">
+                        <strong class="font-bold">Oops!</strong>
+                        <span class="block sm:inline">Something went wrong. Please try again later.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">Get In Touch</h2>
+                <p class="text-slate-600 mb-8 max-w-2xl mx-auto">I'm always excited to discuss new projects, collaborate or joining a team. If you'd like to collaborate, recruit or just say hi, please don't hesitate to reach out!</p>
+                <a href="mailto:christianajulor@gmail.com" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 inline-block">Email Me</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/christian-freshness" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-indigo-400 transition duration-300"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/christian-ajulor/" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-indigo-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/AjulorC" target="_blank" rel="noopener noreferrer" class="text-2xl hover:text-indigo-400 transition duration-300"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Christian Ajulor. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="to-top-button" class="hidden fixed bottom-8 right-8 bg-indigo-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // --- Basic Page Interactivity ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+        const toTopButton = document.getElementById('to-top-button');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                toTopButton.classList.remove('hidden');
+            } else {
+                toTopButton.classList.add('hidden');
+            }
+        };
+        toTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Only prevent default and scroll for links with actual anchor targets
+                if (href && href !== '#') {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // --- Gemini API Integration for AI Project Ideator ---
+        const generateBtn = document.getElementById('generate-idea-btn');
+        const ideaContainer = document.getElementById('idea-container');
+        const ideaContent = document.getElementById('idea-content');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+
+        generateBtn.addEventListener('click', async () => {
+            // 1. Get skills from the page
+            const skillsList = document.getElementById('skills-list');
+            const skills = Array.from(skillsList.querySelectorAll('h3.font-semibold')).map(skill => skill.textContent).join(', ');
+
+            // 2. Prepare for API call
+            loader.classList.remove('hidden');
+            ideaContent.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            generateBtn.disabled = true;
+            generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            // 3. Construct the prompt for Gemini
+            const prompt = `
+                As an expert in data science and career development, generate a novel and impressive data science project idea for a portfolio.
+                The project should be based on the following skills: ${skills}.
+
+                The output should be a single JSON object with the following structure:
+                {
+                  "title": "Project Title",
+                  "description": "A detailed, one-paragraph description of the project, including the problem, dataset, and potential impact.",
+                  "skills_used": ["Skill 1", "Skill 2", "Skill 3"]
+                }
+
+                Ensure the description is engaging and clearly outlines the project's value.
+            `;
+
+            try {
+                // 4. Call the Gemini API
+                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { 
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                    }
+                };
+                const apiKey = ""; // API key will be injected by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    
+                    const idea = JSON.parse(result.candidates[0].content.parts[0].text);
+                    displayIdea(idea);
+
+                } else {
+                    throw new Error("Invalid response structure from API.");
+                }
+
+            } catch (error) {
+                console.error("Error generating project idea:", error);
+                errorMessage.classList.remove('hidden');
+            } finally {
+                // 5. Clean up UI
+                loader.classList.add('hidden');
+                generateBtn.disabled = false;
+                generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        });
+
+        function displayIdea(idea) {
+            // Function to render the generated idea into the DOM
+            ideaContent.innerHTML = `
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">${idea.title}</h3>
+                <p class="text-slate-600 mb-6">${idea.description}</p>
+                <h4 class="font-semibold text-slate-700 mb-3">Key Skills:</h4>
+                <div class="flex flex-wrap gap-2">
+                    ${idea.skills_used.map(skill => `<span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full">${skill}</span>`).join('')}
+                </div>
+            `;
+            ideaContent.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
