@@ -386,7 +386,7 @@
             generateBtn.disabled = true;
             generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
-            // 3. Construct the prompt for Gemini
+            // 3. Construct the prompt for the serverless function
             const prompt = `
                 As an expert in data science and career development, generate a novel and impressive data science project idea for a portfolio.
                 The project should be based on the following skills: ${skills}.
@@ -401,33 +401,19 @@
                 Ensure the description is engaging and clearly outlines the project's value.
             `;
             
-            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-            const payload = { 
-                contents: chatHistory,
-                generationConfig: {
-                    responseMimeType: "application/json",
-                }
-            };
-
             try {
-                // 4. Call the Gemini API
-                // IMPORTANT: Replace "YOUR_API_KEY_HERE" with your actual Gemini API key
-                const apiKey = "AIzaSyDukLR2KkSda1M3ea_RZ4-IPaylzjqrYzI"; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                // 4. Call your secure Netlify function
+                const functionUrl = '/.netlify/functions/generate-idea';
 
-                if (apiKey === "YOUR_API_KEY_HERE") {
-                    throw new Error("API key not replaced. Please add your Gemini API key.");
-                }
-
-                const response = await fetch(apiUrl, {
+                const response = await fetch(functionUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({ prompt: prompt })
                 });
 
                 if (!response.ok) {
                     const errorBody = await response.text();
-                    throw new Error(`API request failed with status ${response.status}: ${errorBody}`);
+                    throw new Error(`Function request failed with status ${response.status}: ${errorBody}`);
                 }
 
                 const result = await response.json();
@@ -440,7 +426,11 @@
                     displayIdea(idea);
 
                 } else {
-                    throw new Error("Invalid response structure from API.");
+                    // Handle cases where the structure might be different or an error is in the body
+                    if (result.error) {
+                         throw new Error(result.error);
+                    }
+                    throw new Error("Invalid response structure from function.");
                 }
 
             } catch (error) {
